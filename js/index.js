@@ -1,8 +1,13 @@
 import { MyIP, ObtenerCoor } from "./geoipify.js";
 
+/*let ip_domain = "google.com";
+const data = await ObtenerCoor(ip_domain)
+console.log(data.latitud);
+console.log(data.longitud);*/
+
 // ***Map controller***
-var map = L.map("map");
-var osmLayer = L.tileLayer(
+let map = L.map("map");
+let osmLayer = L.tileLayer(
   "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
   {
     attribution:
@@ -17,68 +22,39 @@ try {
   const geoIpData = await MyIP();
   const lat = geoIpData.latitud;
   const lng = geoIpData.longitud;
-  var userMarker = L.marker([lat, lng]);
+  let userMarker = L.marker([lat, lng]);
   userMarker.addTo(map);
   map.setView([lat, lng], 13);
 } catch (error) {
   alert("No se pudo obtener tu ubicación");
 }
 
-function getCurrentPositionByGeolocation() {
-  navigator.geolocation.getCurrentPosition(
-    function (position) {
-      var lat = position.coords.latitude;
-      var lng = position.coords.longitude;
-      var userMarker = L.marker([lat, lng]);
-      userMarker.addTo(map);
-      map.setView([lat, lng], 13);
-    },
-    function (error) {
-      alert("No se pudo obtener tu ubicación");
-    }
-  );
-}
+// ***Input Search (based on IP or Domain)***
+let searchInput = document.getElementById("search");
+let searchIp = document.getElementById('bsearch');
 
-// ***Get current position by geolocation***
-var getLocationButton = document.getElementById('geolocationButton')
-getLocationButton.addEventListener('click', function (event) {
-  getCurrentPositionByGeolocation();
+searchIp.addEventListener('click', function (event) {
+  let text = searchInput.value;
+  Ipsearch(text);
 })
 
-// ***Input Search (based on location)***
-var searchInput = document.getElementById("search");
 searchInput.addEventListener("keyup", function (event) {
-  if (event.keyCode === 13) {
-    var query = searchInput.value;
-    if (query) {
-      var url =
-        "https://nominatim.openstreetmap.org/search?format=json&q=" + query;
-      fetch(url)
-        .then(function (response) {
-          return response.json();
-        })
-        .then(function (data) {
-          if (data.length > 0) {
-            var location = data[0];
-            var lat = location.lat;
-            var lng = location.lon;
-            var locationMarker = L.marker([lat, lng]);
-            locationMarker.addTo(map);
-            map.setView([lat, lng], 13);
-          } else {
-            alert("No se encontró la ubicación");
-          }
-        })
-        .catch(function (error) {
-          alert("No se pudo realizar la búsqueda");
-        });
-    }
+  if (event.key === "Enter") {
+    let text = searchInput.value;
+    Ipsearch(text);
   }
 });
 
-// ***Triggers ***
 
-// let ip_domain = "google.com";
-// const data = await ObtenerCoor(ip_domain)
-// console.log(data.latitud);
-// console.log(data.longitud);
+async function Ipsearch (ip_domain){
+  try {
+    const geoIpData = await ObtenerCoor(ip_domain);
+    const lat = geoIpData.latitud;
+    const lng = geoIpData.longitud;
+    let userMarker = L.marker([lat, lng]);
+    userMarker.addTo(map);
+    map.setView([lat, lng], 13);
+  } catch (error) {
+    alert("No se pudo obtener tu ubicación");
+  }
+}
