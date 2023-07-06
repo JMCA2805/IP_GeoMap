@@ -1,57 +1,71 @@
 <!DOCTYPE html>
 <html lang="es">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="../images/ip_geomap.png" type="png">
-    <link rel="stylesheet" href="../style/style.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" href="../images/ip_geomap.png" type="png" />
+    <link rel="stylesheet" href="../style/style.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <title>IP GeoMap</title>
-</head>
+  </head>
 
-<script type="module" src="../js/index.js"></script>
+  <script type="module" src="../js/index.js"></script>
 
-<body>
-
+  <body>
     <header>
-        <nav>
-            <span>IP GeoMap</span>
-        </nav>
+      <nav>
+        <span>IP GeoMap</span>
+      </nav>
     </header>
 
     <main>
-        <section>
-            <div>
-                <!-- banner con buscador y botón para buscar IP -->
-            </div>
-        </section>
-        <section>
-            <div>
-                <div>
-                    <!-- Metadatos -->
-                </div>
-                <div>
-                    <!-- Mapa -->
-                </div>
-            </div>
-        </section>
+      <section>
+        <div>
+          <input id="search" type="text" placeholder="Buscar ubicación">
+          <button>Buscar</button>
+        </div>
+      </section>
+      <section>
+        <div>
+          <div>
+            <!-- Metadatos -->
+          </div>
+          <div id="map" style="width: 800px; height: 600px;"></div>
+          <p>Nota: Las ubicaciones por IP corresponden a la ubicacíon física de tu proveedor de servicio. para más precisión se recomienda utilizar ubicación por GPS</p>
+          <button id="geolocationButton">Obtener mi ubicación por GPS</button>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <span>IP GeoMap</span>
-        <section class="members">
-            <div class="github">
-                <a href="https://github.com/JMCA2805">Jose M. Camacho: <img class="github" src="../images/github_black.png" alt="Logo de Github"> JMCA2805 </a>
-            </div>
-            <div class="github">
-                <a href="https://github.com/gabrielcalderon16">Gabriel Calderon: <img class="github" src="../images/github_black.png" alt="Logo de Github"> gabrielcalderon16</a>
-            </div>
-        </section>
-        <small>
-            IP GeoMap &copy; 2023
-        </small>
+      <span>IP GeoMap</span>
+      <section class="members">
+        <div class="github">
+          <a href="https://github.com/JMCA2805"
+            >Jose M. Camacho:
+            <img
+              class="github"
+              src="../images/github_black.png"
+              alt="Logo de Github"
+            />
+            JMCA2805
+          </a>
+        </div>
+        <div class="github">
+          <a href="https://github.com/gabrielcalderon16"
+            >Gabriel Calderon:
+            <img
+              class="github"
+              src="../images/github_black.png"
+              alt="Logo de Github"
+            />
+            gabrielcalderon16</a
+          >
+        </div>
+      </section>
+      <small> IP GeoMap &copy; 2023 </small>
     </footer>
-
-</body>
-
+  </body>
 </html>
