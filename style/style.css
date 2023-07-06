@@ -130,19 +130,20 @@ div.inf div {
 
 /* Mapa */
 div.map{
-    display: flex;
+    display: block;
     justify-content: center;
     align-items: center;
     width: 100%;
     padding: 30px;
 }
 
-div.map div {
+div.map div#map {
     height: 100%;
     width: 100%;
     background-color: white;
     border-radius: 20px;
     border: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 10px;
 }
 
 /* footer */
