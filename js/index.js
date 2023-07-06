@@ -39,12 +39,6 @@ function getCurrentPositionByGeolocation() {
   );
 }
 
-// ***Get current position by geolocation***
-// var getLocationButton = document.getElementById('geolocationButton')
-// getLocationButton.addEventListener('click', function (event) {
-//   getCurrentPositionByGeolocation();
-// })
-
 // ***Input Search (based on location)***
 var searchInput = document.getElementById("search");
 searchInput.addEventListener("keyup", function (event) {
