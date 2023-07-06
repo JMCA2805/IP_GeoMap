@@ -1,16 +1,51 @@
-const apikey = "";
-let ip_domain = "";
+const apikey = "at_rpXAJFV21e0DsOX8n5ROoj8FMqKVU";
+const geoipify = 'https://geo.ipify.org/api/v2/country,city?apiKey=' + apikey;
 
 // Obtener IP y Dirección
-function MyIP () {
-    const geoipify = 'https://geo.ipify.org/api/v2/country,city?apiKey='+apikey;
-    console.log(geoipify);
+async function MyIP() {
+    const results = await fetch(geoipify)
+        .then(response => response.json())
+        .then(async data => {
+            const results = {
+                "ip": data.ip,
+                "país": data.location.country,
+                "estado": data.location.region,
+                "ciudad": data.location.city,
+                "zona_horaria": data.location.timezone,
+                "codigo_postal": data.location.postalCode,
+                "latitud": data.location.lat,
+                "longitud": data.location.lng,
+                "nombre": data.as.name,
+                "dominio": data.as.domain,
+                "isp": data.isp
+            }
+            return await results;
+        });
+    return await results;
 }
 
 // Buscar IP o Dominio y Obtener Dirección
-function ObtenerCoor () {
-    const search_geoipify = 'https://geo.ipify.org/api/v2/country,city?apiKey='+apikey+'&ipAddress='+ip_domain+'&domain='+ip_domain;
-    console.log(search_geoipify);
+async function ObtenerCoor(ip_domain) {
+    const results = await fetch(geoipify + '&ipAddress=' + ip_domain + '&domain=' + ip_domain)
+        .then(response => response.json())
+        .then(async data => {
+            const results = {
+                "ip": data.ip,
+                "país": data.location.country,
+                "estado": data.location.region,
+                "ciudad": data.location.city,
+                "zona_horaria": data.location.timezone,
+                "codigo_postal": data.location.postalCode,
+                "latitud": data.location.lat,
+                "longitud": data.location.lng,
+                "nombre": data.as.name,
+                "dominio": data.as.domain,
+                "isp": data.isp
+            }
+            return await results;
+        });
+    return await results;
+
 }
 
-export {MyIP,ObtenerCoor};
+export { MyIP, ObtenerCoor };
