@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="../images/ip_geomap.png" type="png">
     <link rel="stylesheet" href="../style/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <title>IP GeoMap</title>
 </head>
 
@@ -26,7 +28,7 @@
         <section class="content">
             <div class="search">
                 <!-- banner con buscador y botón para buscar IP -->
-                <input type="text" class="ipsearch"  placeholder="Buscar IP o Dominio">
+                <input id="search" type="text" class="ipsearch"  placeholder="Buscar IP o Dominio">
                 <button class="bsearch" type="submit"><img src="../images/search_black.png" alt="Buscar"></button>
             </div>
         </section>
@@ -39,7 +41,7 @@
                 </div>
                 <div class="map">
                     <!-- Mapa -->
-                    <div>
+                    <div id="map" class="realmap" style="width: 800px; height: 400px;">
                     </div>
                 </div>
             </div>

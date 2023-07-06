@@ -137,7 +137,7 @@ div.map{
     padding: 30px;
 }
 
-div.map div {
+div.realmap{
     height: 100%;
     width: 100%;
     background-color: white;
