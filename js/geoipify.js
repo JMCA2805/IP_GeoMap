@@ -1,4 +1,4 @@
-const apikey = "at_rpXAJFV21e0DsOX8n5ROoj8FMqKVU";
+const apikey = "";
 let ip_domain = "";
 
 // Obtener IP y Dirección
