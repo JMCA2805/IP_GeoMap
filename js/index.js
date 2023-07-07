@@ -1,5 +1,29 @@
 import { MyIP, ObtenerCoor } from "./geoipify.js";
 
+// Funciones de Inicio
+function Terminado() {
+  const loader2 = document.getElementById("loader2");
+  loader2.style.display = "none";
+}
+const debuonceTerminado = debounce(Terminado, 5000);
+function Empezando() {
+  const loader2 = document.getElementById("loader2");
+  loader2.style.display = "flex";
+  debuonceTerminado();
+}
+
+// Precarga
+async function Home() {
+  const loader = document.getElementById("loader");
+  loader.remove();
+  const hidden = document.querySelector(".hidden");
+  hidden.classList.remove("hidden");
+  debuonceTerminado();
+}
+
+// window.onload takes 3 seconds to run
+window.onload = Home();
+
 // ***Map controller***
 let map = L.map("map");
 let osmLayer = L.tileLayer(
@@ -11,11 +35,10 @@ let osmLayer = L.tileLayer(
 );
 osmLayer.addTo(map);
 
-
 // ***Startup of map based on IP***
 try {
   const geoIpData = await MyIP();
-  CrearDiv(geoIpData);
+  await CrearDiv(geoIpData);
   const lat = geoIpData.latitud;
   const lng = geoIpData.longitud;
   let userMarker = L.marker([lat, lng]);
@@ -25,28 +48,35 @@ try {
   alert("No se pudo obtener tu ubicación");
 }
 
+
 // ***Input Search (based on IP or Domain)***
+function Buscar(text) {
+  Empezando();
+  Ipsearch(text);
+}
+
+// Eventos para Buscar
 let searchInput = document.getElementById("search");
 let searchIp = document.getElementById('bsearch');
 
 searchIp.addEventListener('click', function (event) {
   let text = searchInput.value;
-  Ipsearch(text);
+  Buscar(text);
 })
 
 searchInput.addEventListener("keyup", function (event) {
   if (event.key === "Enter") {
     let text = searchInput.value;
-    Ipsearch(text);
+    Buscar(text);
   }
 });
 
-
+// Buscar dominio o IP
 async function Ipsearch(ip_domain) {
   try {
     const geoIpData = await ObtenerCoor(ip_domain);
     await BorrarDiv()
-    CrearDiv(geoIpData);
+    await CrearDiv(geoIpData);
     const lat = geoIpData.latitud;
     const lng = geoIpData.longitud;
     let userMarker = L.marker([lat, lng]);
@@ -98,5 +128,20 @@ async function BorrarDiv() {
   const divsToDelete = document.querySelectorAll(".propiedades");
   for (const div of divsToDelete) {
     await div.remove();
+  }
+}
+
+// Función debounce
+function debounce(funcion, tiempo) {
+  let timeoutid;
+  return function () {
+    if (timeoutid) {
+      clearTimeout(timeoutid);
+    }
+    const context = this;
+    const argumento = arguments;
+    timeoutid = setTimeout(() => {
+      funcion.apply(context, argumento);
+    }, tiempo)
   }
 }
