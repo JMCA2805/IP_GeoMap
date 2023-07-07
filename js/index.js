@@ -2,8 +2,10 @@ import { MyIP, ObtenerCoor } from "./geoipify.js";
 
 // Funciones de Inicio
 function removerLoader() {
+  const container = document.getElementById("container");
   const loader2 = document.getElementById("loader2");
   loader2.style.display = "none";
+  container.style.height = "100%";
 }
 
 function iniciarLoader() {
