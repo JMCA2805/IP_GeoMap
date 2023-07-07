@@ -45,7 +45,11 @@ try {
   userMarker.addTo(map);
   map.setView([lat, lng], 13);
 } catch (error) {
-  alert("No se pudo obtener tu ubicación");
+  Swal.fire(
+    '¡No se pudo obtener tu dirección IP!',
+    '¡Presione el botón para continuar!',
+    'error'
+  )
 }
 
 
@@ -83,7 +87,11 @@ async function Ipsearch(ip_domain) {
     userMarker.addTo(map);
     map.setView([lat, lng], 13);
   } catch (error) {
-    alert("No se pudo obtener tu ubicación");
+    Swal.fire(
+      '¡Dirección IP o Dominio Incorrectos!',
+      '¡Presione el botón para continuar!',
+      'error'
+    )
   }
 }
 
