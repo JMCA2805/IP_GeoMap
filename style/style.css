@@ -143,6 +143,10 @@ div.propiedades div.title {
     width: 130px;
 }
 
+div.title label {
+    font-family: Arial Black;
+}
+
 div.propiedades div.metadatos {
     text-align: center;
 }
