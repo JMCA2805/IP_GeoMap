@@ -10,6 +10,8 @@ function removerLoader() {
 
 function iniciarLoader() {
   const loader2 = document.getElementById("loader2");
+  const container = document.getElementById("container");
+  container.style.height = "500px";
   loader2.style.display = "flex";
 }
 
