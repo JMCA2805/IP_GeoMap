@@ -28,20 +28,26 @@
         <section class="content">
             <div class="search">
                 <!-- banner con buscador y botón para buscar IP -->
-                <input id="search" type="text" class="ipsearch"  placeholder="Buscar IP o Dominio">
-                <button class="bsearch" type="submit"><img src="../images/search_black.png" alt="Buscar"></button>
+                <input type="text" class="ipsearch" placeholder="Buscar IP o Dominio" id="search">
+                <button class="bsearch" type="submit"><img src="../images/search_black.png" alt="Buscar"
+                        id="bsearch"></button>
             </div>
         </section>
         <section>
             <div class="content2">
                 <div class="inf">
                     <!-- Metadatos -->
-                    <div>
+                    <div class="inf_group">
+                        <h2>IP Address Information</h2>
+                        <div class="inf_dinamico">
+                            
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="map">
                     <!-- Mapa -->
-                    <div id="map" class="realmap" style="width: 100%; height: 100%">
+                    <div id="map">
                     </div>
                 </div>
             </div>
