@@ -1,15 +1,14 @@
 import { MyIP, ObtenerCoor } from "./geoipify.js";
 
 // Funciones de Inicio
-function Terminado() {
+function removerLoader() {
   const loader2 = document.getElementById("loader2");
   loader2.style.display = "none";
 }
-const debuonceTerminado = debounce(Terminado, 5000);
-function Empezando() {
+
+function iniciarLoader() {
   const loader2 = document.getElementById("loader2");
   loader2.style.display = "flex";
-  debuonceTerminado();
 }
 
 // Precarga
@@ -18,10 +17,8 @@ async function Home() {
   loader.remove();
   const hidden = document.querySelector(".hidden");
   hidden.classList.remove("hidden");
-  debuonceTerminado();
 }
 
-// window.onload takes 3 seconds to run
 window.onload = Home();
 
 // ***Map controller***
@@ -55,7 +52,7 @@ try {
 
 // ***Input Search (based on IP or Domain)***
 function Buscar(text) {
-  Empezando();
+  iniciarLoader();
   Ipsearch(text);
 }
 
@@ -128,6 +125,7 @@ async function CrearDiv(geoIpData) {
     infDinamicoDiv.appendChild(div);
 
     cont++;
+    removerLoader()
   }
 }
 
@@ -136,20 +134,5 @@ async function BorrarDiv() {
   const divsToDelete = document.querySelectorAll(".propiedades");
   for (const div of divsToDelete) {
     await div.remove();
-  }
-}
-
-// Función debounce
-function debounce(funcion, tiempo) {
-  let timeoutid;
-  return function () {
-    if (timeoutid) {
-      clearTimeout(timeoutid);
-    }
-    const context = this;
-    const argumento = arguments;
-    timeoutid = setTimeout(() => {
-      funcion.apply(context, argumento);
-    }, tiempo)
   }
 }
