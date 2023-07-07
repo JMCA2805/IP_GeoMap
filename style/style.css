@@ -119,13 +119,32 @@ div.content2 div.inf{
     padding: 30px;
 }
 
-div.inf div {
+div.inf div.inf_group {
     height: 100%;
     width: 100%; 
     background-color: white;
     border-radius: 20px;
     border: 1px solid rgba(0, 0, 0, 0.2);
 
+}
+
+div.inf h2 {
+    margin: 20px 0;
+    text-align: center;
+}
+
+div.propiedades {
+    display: flex;
+    margin: 10px 0;
+}
+
+div.propiedades div.title {
+    margin: 0 20px;
+    width: 130px;
+}
+
+div.propiedades div.metadatos {
+    text-align: center;
 }
 
 /* Mapa */
@@ -137,7 +156,7 @@ div.map{
     padding: 30px;
 }
 
-div.realmap{
+div.map div#map {
     height: 100%;
     width: 100%;
     background-color: white;
