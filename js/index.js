@@ -1,5 +1,7 @@
 import { MyIP, ObtenerCoor } from "./geoipify.js";
 
+const dbcremoverLoader = debounce(removerLoader, 2000);
+
 // Funciones de Inicio
 function removerLoader() {
   const container = document.getElementById("container");
@@ -52,6 +54,7 @@ try {
     'error'
   )
   removerLoader();
+  console.log(error)
 }
 
 
@@ -131,7 +134,7 @@ async function CrearDiv(geoIpData) {
     infDinamicoDiv.appendChild(div);
 
     cont++;
-    removerLoader();
+    await dbcremoverLoader();
   }
 }
 
@@ -152,3 +155,22 @@ mode.addEventListener('click', () => {
   var stylesheet = document.body.classList.contains('dark') ? '../style/dark_sweetalert2.css' : '../style/sweetalert2.css';
   document.getElementById('styleSweet').href = stylesheet;
 })
+
+// Función debounce
+
+function debounce(funcion, tiempo) {
+  let timeoutid;
+  return function () {
+
+    if (timeoutid) {
+      clearTimeout(timeoutid);
+    }
+
+    const context = this;
+    const argumento = arguments;
+
+    timeoutid = setTimeout(() => {
+      funcion.apply(context, argumento);
+    }, tiempo)
+  }
+}
