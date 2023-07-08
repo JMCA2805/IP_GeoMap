@@ -40,6 +40,7 @@ nav.nav a {
 
 nav.nav a span {
   font-family: Arial Black;
+  white-space: nowrap
 }
 
 /* Modo Claro y Oscuro */
@@ -89,6 +90,7 @@ section div.search {
 div.search input.ipsearch {
   height: 40px;
   width: 400px;
+  min-width: 200px;
   margin: 0 15px 0 15px;
   border-radius: 20px;
   padding: 0 15px 0 15px;
@@ -135,12 +137,26 @@ div.content2 div.inf {
 }
 
 div.inf div.inf_group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   height: 100%;
   width: 100%;
   background-color: white;
   border-radius: 20px;
   border: 1px solid rgba(0, 0, 0, 0.2);
   transition: all ease 1s;
+}
+
+div.card_title {
+  width: 100%;
+  text-align: center;
+}
+
+.inf_dinamico {
+  margin-top: 10px;
+  margin-bottom: 20px;
 }
 
 div.inf h2 {
@@ -155,7 +171,7 @@ div.propiedades {
 
 div.propiedades div.title {
   margin: 0 20px;
-  width: 130px;
+  min-width: 90px;
 }
 
 div.title label {
@@ -163,7 +179,8 @@ div.title label {
 }
 
 div.propiedades div.metadatos {
-  text-align: center;
+  inline-size: 120px;
+  overflow-wrap: break-word;
 }
 
 /* Mapa */
@@ -418,13 +435,13 @@ body.dark .lds-spinner div:after {
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1024px) {
+@media only screen and (min-width: 768px) and (max-width: 1400px) {
   div.content2 {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1400px) {
   div.content2 {
     grid-template-columns: 30% 70%;
     padding-left: 3rem;
