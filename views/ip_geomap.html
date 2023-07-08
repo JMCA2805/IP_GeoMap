@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css">
     <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
     <script src="../js/sweetalert2.all.js"></script>
-    <link rel="stylesheet" href="../style/sweetalert2.css">
+    <link rel="stylesheet" href="../style/sweetalert2.css" id="styleSweet">
     <title>IP GeoMap</title>
 </head>
 
@@ -36,7 +36,7 @@
         <nav class="nav">
             <a href="./ip_geomap.html"><span>IP GeoMap</span></a>
             <div class="nav-bar">
-                <button><img src="../images/moon.png" alt="Modo-Claro-Oscuro"> </button>
+                <button id="mode" class="btn"><img alt="Modo-Claro-Oscuro" id="mode_img" class="imgwhite"> </button>
             </div>
         </nav>
     </header>
@@ -46,8 +46,7 @@
             <div class="search">
                 <!-- banner con buscador y botón para buscar IP -->
                 <input type="text" class="ipsearch" placeholder="Buscar IP o Dominio" id="search">
-                <button class="bsearch" type="submit"><img src="../images/search_black.png" alt="Buscar"
-                        id="bsearch"></button>
+                <button class="bsearch" type="submit"><img alt="Buscar" class="img-buscar" id="bsearch"></button>
             </div>
         </section>
         <section class="content_2" id="container">
@@ -92,12 +91,12 @@
         <span>IP GeoMap</span>
         <section class="members">
             <div class="github">
-                <a href="https://github.com/JMCA2805">Jose M. Camacho: <img class="github"
-                        src="../images/github_black.png" alt="Logo de Github"> JMCA2805 </a>
+                <a href="https://github.com/JMCA2805">Jose M. Camacho: <img class="github" alt="Logo de Github">
+                    JMCA2805 </a>
             </div>
             <div class="github">
                 <a href="https://github.com/gabrielcalderon16">Gabriel Calderon: <img class="github"
-                        src="../images/github_black.png" alt="Logo de Github"> gabrielcalderon16</a>
+                        alt="Logo de Github"> gabrielcalderon16</a>
             </div>
         </section>
         <div class="copy">

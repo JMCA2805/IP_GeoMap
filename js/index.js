@@ -51,6 +51,7 @@ try {
     '¡Presione el botón para continuar!',
     'error'
   )
+  removerLoader();
 }
 
 
@@ -93,6 +94,7 @@ async function Ipsearch(ip_domain) {
       '¡Presione el botón para continuar!',
       'error'
     )
+    removerLoader();
   }
 }
 
@@ -129,7 +131,7 @@ async function CrearDiv(geoIpData) {
     infDinamicoDiv.appendChild(div);
 
     cont++;
-    removerLoader()
+    removerLoader();
   }
 }
 
@@ -140,3 +142,13 @@ async function BorrarDiv() {
     await div.remove();
   }
 }
+
+// Modo claro y Oscuro
+const mode = document.getElementById('mode');
+// Sweet Alert
+
+mode.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  var stylesheet = document.body.classList.contains('dark') ? '../style/dark_sweetalert2.css' : '../style/sweetalert2.css';
+  document.getElementById('styleSweet').href = stylesheet;
+})

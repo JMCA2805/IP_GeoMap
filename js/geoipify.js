@@ -1,4 +1,4 @@
-const apikey = "at_rpXAJFV21e0DsOX8n5ROoj8FMqKVU";
+const apikey = "";
 const geoipify = 'https://geo.ipify.org/api/v2/country,city?apiKey=' + apikey;
 
 // Obtener IP y Dirección
