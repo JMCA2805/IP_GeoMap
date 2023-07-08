@@ -171,7 +171,7 @@ div.propiedades {
 
 div.propiedades div.title {
   margin: 0 20px;
-  min-width: 90px;
+  min-width: 130px;
 }
 
 div.title label {
@@ -181,6 +181,7 @@ div.title label {
 div.propiedades div.metadatos {
   inline-size: 120px;
   overflow-wrap: break-word;
+  margin-top: auto;
 }
 
 /* Mapa */
@@ -429,6 +430,15 @@ body.dark .lds-spinner div:after {
 }
 
 /* Cards responsive */
+@media only screen and (max-width: 400px) {
+  section.members div.github a {
+    font-size: 15px;
+  }
+  small {
+    margin-top: 10px;
+  }
+}
+
 @media only screen and (max-width: 768px) {
   div.content2 {
     grid-template-columns: 1fr;
