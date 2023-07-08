@@ -21,6 +21,7 @@
 - Datos que redirigen a las cuentas de usuario de los integrantes (Footer)
 - Loaders de carga tanto para cargar el HTML como en el buscador adaptable al modo oscuro
 - Responsive
+- Mapa
 
 # Instrucciones
 
